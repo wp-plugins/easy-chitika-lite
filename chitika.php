@@ -277,7 +277,7 @@ if (!class_exists('Chitika')) {
 
       $option = &$mTab->addTabOption('text', 'fallbackurl');
       $properties = array('desc' => __("Fallback URL:", 'easy-ads') . "&nbsp;&nbsp;&nbsp;&nbsp; ",
-          'title' => __("This value is used only if the 'Alternae Ad' option is selected above.", 'easy-ads'),
+          'title' => __("This value is used only if the 'Alternate Ad' option is selected above.", 'easy-ads'),
           'value' => "Your Fallback URL",
           'style' => 'width:60%;text-align:left;',
           'before' => '<tr><td colspan="2">',

@@ -3,7 +3,7 @@
 /*
   Plugin Name: Easy Chitika
   Plugin URI: http://www.thulasidas.com/plugins/easy-chitika
-  Version: 2.00
+  Version: 2.01
   Description: Make more money from your blog using <a href="http://chitika.com/publishers.php?refid=manojt">Chitika</a>. Configure it at <a href="options-general.php?page=easy-chitika-lite.php">Settings &rarr; Easy Chitika</a>.
   Author: Manoj Thulasidas
   Author URI: http://www.thulasidas.com
@@ -111,6 +111,7 @@ else {
         $plgURL = $this->plgURL;
         require_once($this->plgDir . '/EzAdmin.php');
         $ez = new EzAdmin($plg, $slug, $plgURL);
+        $ez->plgFile = __FILE__;
         if ($this->options['kill_author']) {
           $ez->killAuthor = true;
         }
