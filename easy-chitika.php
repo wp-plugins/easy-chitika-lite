@@ -3,7 +3,7 @@
 /*
   Plugin Name: Easy Chitika
   Plugin URI: http://www.thulasidas.com/plugins/easy-chitika
-  Version: 2.01
+  Version: 2.10
   Description: Make more money from your blog using <a href="http://chitika.com/publishers.php?refid=manojt">Chitika</a>. Configure it at <a href="options-general.php?page=easy-chitika-lite.php">Settings &rarr; Easy Chitika</a>.
   Author: Manoj Thulasidas
   Author URI: http://www.thulasidas.com
