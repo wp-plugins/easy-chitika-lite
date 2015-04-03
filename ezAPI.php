@@ -312,15 +312,15 @@ if (!class_exists("ezOption")) {
       if (empty($this->url)) {
         $this->url = 'http://buy.thulasidas.com/' . $name;
       }
-      $link = '<b><a href="' . $this->url . '" target="_blank">' . $value . '</a> </b>';
+      $link = "<b><a href='{$this->url}' target='_blank' class='popup'> $value</a> </b>";
       $text = $link . $this->desc;
       $price = $this->price;
-      $moreInfo = "&nbsp; <a href='http://www.thulasidas.com/plugins/$name' title='More info about $value'>More Info</a>";
+      $moreInfo = "&nbsp; <a href='http://www.thulasidas.com/plugins/$name' title='More info about $value' class='popup' data-height='1024'>More Info</a>";
 
       $liteVersion = " <a href='http://buy.thulasidas.com/lite/$name.zip' title='" . sprintf(__("Download the Lite version of %s", 'easy-ads'), $value) . "'>" . __("Get Lite Version", 'easy-ads') . "</a> ";
-      $proVersion = " <a href='http://buy.thulasidas.com/$name' title='" . sprintf(__("Buy the Pro version of %s for \$%s", 'easy-ads'), $value, $value) . "'>" . "Get Pro Version" . "</a><br />";
+      $proVersion = " <a href='http://buy.thulasidas.com/$name' title='" . sprintf(__("Buy the Pro version of %s for \$%s", 'easy-ads'), $value, $value) . "' class='popup'>" . "Get Pro Version" . "</a><br />";
       $plugindir = get_option('siteurl') . '/' . PLUGINDIR . '/' . basename(dirname(__FILE__));
-      $why = addslashes("<a href='http://buy.thulasidas.com/$name' title='" . sprintf(__("Pro version of the %s plugin", 'easy-ads'), $name) . "'><img src='$plugindir/ezpaypal.png' border='0' alt='ezPayPal -- Instant PayPal Shop.' class='alignright' /></a><br />") .
+      $why = addslashes("<a href='http://buy.thulasidas.com/$name' title='" . sprintf(__("Pro version of the %s plugin", 'easy-ads'), $name) . "'><img src='$plugindir/img/ezpaypal.png' border='0' alt='ezPayPal -- Instant PayPal Shop.' class='alignright' /></a><br />") .
               $this->why;
       echo "<li>" . ezTab::makeTextWithTooltip($text, $this->title, $value, 350, false);
       if ($price >= 0) {
@@ -1085,6 +1085,36 @@ if (!class_exists("ezAbout")) {
       $this->renderContent();
 
       echo "</div><!-- End: $name --> \n";
+      ?>
+      <script type = "text/javascript">
+        function popupwindow(url, title, w, h) {
+          return ezPopUp(url, title, w, h);
+        }
+        function ezPopUp(url, title, w, h) {
+          var wLeft = window.screenLeft ? window.screenLeft : window.screenX;
+          var wTop = window.screenTop ? window.screenTop : window.screenY;
+          var left = wLeft + (window.innerWidth / 2) - (w / 2);
+          var top = wTop + (window.innerHeight / 2) - (h / 2);
+          window.open(url, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
+          return true;
+        }
+        jQuery(document).ready(function () {
+          jQuery('body').on('click', ".popup", function (e) {
+            e.preventDefault();
+            var url = jQuery(this).attr('href');
+            var title = "Window";
+            var w = 1024;
+            var h = 728;
+            if (jQuery(this).attr('data-height')) {
+              h = jQuery(this).attr('data-height');
+              w = 1000;
+            }
+            return ezPopUp(url, title, w, h);
+          });
+        });
+      </script>
+      <?php
+
     }
 
     function defineOptions() {

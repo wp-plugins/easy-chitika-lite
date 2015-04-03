@@ -3,8 +3,8 @@ Contributors: manojtd
 Donate link: http://buy.thulasidas.com/easy-chitika
 Tags: chitika, ad, ads, advertising, income
 Requires at least: 3.2
-Tested up to: 4.0
-Stable tag: 2.20
+Tested up to: 4.1
+Stable tag: 2.40
 License: GPL2 or later
 
 Easy Chitika showcases Chitika ads on your blog, with full customization.
@@ -13,9 +13,9 @@ Easy Chitika showcases Chitika ads on your blog, with full customization.
 
 *Easy Chitika* provides a streamlined interface to deploy Chitika ads on your blog. You can customize the colors and sizes of the ad blocks and activate them right from the plugin interface. If you don't have an Chitika account, [sign up here](http://chitika.com/publishers.php?refid=manojt "Create your Chitika account").
 
-*Easy Chitika* is part of the *easy series* of advertising plugins comprising of Google AdSense, Easy Ads and Easy Chitika. If you plan to use more than one ad provider, you will find it more convenient to install [Easy Ads](http://buy.ads-ez.com/easy-ads/ "Manage multiple ad providers on your blog"), a premium plugin that combines all of them in a neatly tabbed, streamlined interface.
+*Easy Chitika* is part of the *easy series* of advertising plugins comprising of Google AdSense, Easy Ads and Easy Chitika. If you plan to use more than one ad provider, you will find it more convenient to install [Easy Ads](http://buy.ads-ez.com/easy-ads "Manage multiple ad providers on your blog"), a premium plugin that combines all of them in a neatly tabbed, streamlined interface.
 
-Note that the *easy series* of advertising plugins require PHPv5.3+. If they don't work on your blog host, please consider the amazing [Easy AdSense Pro](http://buy.ads-ez.com/easy-adsense/ "The most popular plugin to insert AdSense on your blog") for all your advertising needs. It can insert non-AdSense blocks as well.
+Note that the *easy series* of advertising plugins require PHPv5.3+. If they don't work on your blog host, please consider the amazing [Easy AdSense Pro](http://buy.ads-ez.com/easy-adsense "The most popular plugin to insert AdSense on your blog") for all your advertising needs. It can insert non-AdSense blocks as well.
 
 = Features =
 1. Tabbed and intuitive interface.
@@ -33,11 +33,11 @@ Note that the *easy series* of advertising plugins require PHPv5.3+. If they don
 2. It also lets you specify a list of computers where your ads will not be shown, in order to prevent accidental clicks on your own ads -- one of the main reasons AdSense bans you.
 3. Also in the works for the Pro version is a compatibility mode, which solves the issue of the ad insertion messing up your page appearances when using some  themes.
 
-The Pro version costs $4.75 and can be [purchased online](http://buy.thulasidas.com/easy-chitika/ "Pro version of the Easy Chitika plugin for $4.75") with instant download link.
+The Pro version costs $4.75 and can be [purchased online](http://buy.thulasidas.com/easy-chitika "Pro version of the Easy Chitika plugin for $4.75") with instant download link.
 
 == Upgrade Notice ==
 
-Automatic options migration upon plugin activation.
+Refactoring and documentation changes.
 
 == Screenshots ==
 
@@ -65,7 +65,7 @@ Please copy *all* the files in the zip archive to your plugin directory. You nee
 
 This plugin requires PHP version 5.3 or later. If it doesn't find the right version, it posts an error message in the plugins page, and does nothing. You will need to contact the system admin or support folks of your hosting service and request them to install PHP5.x for you. Usually, all it takes is just an email to get it sorted out.
 
-Note that this plugin requires PHPv5.3+. If it does not work on your web host, please consider the amazing [Easy AdSense Pro](http://buy.ads-ez.com/easy-adsense/ "The most popular plugin to insert AdSense on your blog") for all your advertising needs. It can insert non-AdSense blocks as well.
+Note that this plugin requires PHPv5.3+. If it does not work on your web host, please consider the amazing [Easy AdSense Pro](http://buy.ads-ez.com/easy-adsense "The most popular plugin to insert AdSense on your blog") for all your advertising needs. It can insert non-AdSense blocks as well.
 
 = How can I control the appearance of the ad blocks using CSS? =
 
@@ -90,6 +90,7 @@ Please report any problems, and share your thoughts and comments [at the plugin 
 
 == Change Log ==
 
+* V2.40: Refactoring and documentation changes. [Apr 2, 2015]
 * V2.20: Automatic options migration upon plugin activation. [Sep 26, 2014]
 * V2.11: Minor change to the admin interface. [Sep 9, 2011]
 * V2.10: Compatibility with WP4.0. [Sep 7, 2014]
