@@ -3,8 +3,8 @@ Contributors: manojtd
 Donate link: http://buy.thulasidas.com/easy-chitika
 Tags: chitika, ad, ads, advertising, income
 Requires at least: 3.2
-Tested up to: 4.1
-Stable tag: 2.40
+Tested up to: 4.2
+Stable tag: 2.50
 License: GPL2 or later
 
 Easy Chitika showcases Chitika ads on your blog, with full customization.
@@ -37,7 +37,7 @@ The Pro version costs $4.75 and can be [purchased online](http://buy.thulasidas.
 
 == Upgrade Notice ==
 
-Refactoring and documentation changes.
+Compatibility with WordPress 4.2.
 
 == Screenshots ==
 
@@ -90,6 +90,7 @@ Please report any problems, and share your thoughts and comments [at the plugin 
 
 == Change Log ==
 
+* V2.50: Compatibility with WordPress 4.2. [April 25, 2015]
 * V2.40: Refactoring and documentation changes. [Apr 2, 2015]
 * V2.20: Automatic options migration upon plugin activation. [Sep 26, 2014]
 * V2.11: Minor change to the admin interface. [Sep 9, 2011]
