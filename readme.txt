@@ -3,8 +3,8 @@ Contributors: manojtd
 Donate link: http://buy.thulasidas.com/easy-chitika
 Tags: chitika, ad, ads, advertising, income
 Requires at least: 3.2
-Tested up to: 4.2
-Stable tag: 2.50
+Tested up to: 4.3
+Stable tag: 2.70
 License: GPL2 or later
 
 Easy Chitika showcases Chitika ads on your blog, with full customization.
@@ -37,7 +37,7 @@ The Pro version costs $4.75 and can be [purchased online](http://buy.thulasidas.
 
 == Upgrade Notice ==
 
-Compatibility with WordPress 4.2.
+Major changes to fix HTML5 validation errors.
 
 == Screenshots ==
 
@@ -46,9 +46,15 @@ Compatibility with WordPress 4.2.
 
 == Installation ==
 
-The easiest way to install this plugin is to use the WordPress Admin interface. Go to your admin dashboard, find the "Plugins" menu, and click on "Add New". Find this plugin and click on "Install Now" and follow the WordPress instructions.
+= Searching =
+
+The easiest way to install this plugin is to use the WordPress Admin interface. Go to your admin dashboard, find the "Plugins" menu, and click on "Add New". Search for this plugin and click on "Install Now" and follow the WordPress instructions.
+
+= Uploading =
 
 If you want to download it and manually install, you can again use the WordPress dashboard interface. First download the plugin zip file to your local computer. Then go to your admin dashboard, find the "Plugins" menu, and click on "Add New". After clicking on the "Add New" menu item as above, click on "Upload" (below the title "Install Plugins" near the top). Browse for your downloaded zip file, upload it and activate the plugin.
+
+= FTP =
 
 If you want to manually upload it using your ftp program, unzip the downloaded zip file and,
 1. Upload the *Easy Chitika* plugin (the whole folder) to the '/wp-content/plugins/' directory.
@@ -90,6 +96,8 @@ Please report any problems, and share your thoughts and comments [at the plugin 
 
 == Change Log ==
 
+* V2.70: Major changes to fix HTML5 validation errors. [Sep 10, 2015]
+* V2.60: Compatibility with WordPress 4.3. [Aug 10, 2015]
 * V2.50: Compatibility with WordPress 4.2. [April 25, 2015]
 * V2.40: Refactoring and documentation changes. [Apr 2, 2015]
 * V2.20: Automatic options migration upon plugin activation. [Sep 26, 2014]

@@ -18,7 +18,7 @@ var displayed_minitab = null;
 
 function setup_tabs()
 {
-  var tab_elements = document.getElementsByName("tabs") ;
+  var tab_elements = document.getElementsByClassName("tabs") ;
   var tab_links ;
 
   for (var j = 0; j < tab_elements.length; j++)

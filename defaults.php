@@ -26,7 +26,7 @@ $defaults = array
         "Chitika" =>
         array(
             "desc" => "<a href='http://chitika.com/' target='_blank'>Chitika</a> shows big ads on your site, only when the user gets there by web searches. It is compatible with Google AdSense. Click on the <a href='http://chitika.com/' target='_blank'>Chitika</a> image to sign up.",
-            "referral" => "<a href='https://chitika.com/' style='text-decoration:'none';' title='Get Chitika | Premium'><img src='$plugindir/chitika.png' border='0' alt='Get Chitika | Premium' title='Get Chitika | Premium' /></a>",
+            "referral" => "<a href='https://chitika.com/' style='text-decoration:none;' title='Get Chitika | Premium'><img src='$plugindir/chitika.png' style='border:0' alt='Get Chitika | Premium' title='Get Chitika | Premium' /></a>",
         )
     )
 );

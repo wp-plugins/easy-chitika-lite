@@ -17,6 +17,22 @@
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+if (!function_exists('ezUpdateOption')) {
+
+  function ezUpdateOption($name, $option) {
+    return update_option($name, $option);
+  }
+
+}
+
+if (!function_exists('ezGetOption')) {
+
+  function ezGetOption($name, $option) {
+    return get_option($name);
+  }
+
+}
+
 if (!class_exists("ezNS")) {
 
   class ezNS { // Name Space simulation
@@ -60,7 +76,7 @@ if (!class_exists("ezNS")) {
     public static function setStaticVars($dynDefaults) {
       self::$defaults = $dynDefaults;
       self::$locale = get_locale();
-      self::$genOptions = get_option(self::$genOptionName);
+      self::$genOptions = ezGetOption(self::$genOptionName, self::$genOptions );
       self::$isFiltered = false;
       self::$isPure = false;
       self::$gCount = 0;
@@ -320,7 +336,7 @@ if (!class_exists("ezOption")) {
       $liteVersion = " <a href='http://buy.thulasidas.com/lite/$name.zip' title='" . sprintf(__("Download the Lite version of %s", 'easy-ads'), $value) . "'>" . __("Get Lite Version", 'easy-ads') . "</a> ";
       $proVersion = " <a href='http://buy.thulasidas.com/$name' title='" . sprintf(__("Buy the Pro version of %s for \$%s", 'easy-ads'), $value, $value) . "' class='popup'>" . "Get Pro Version" . "</a><br />";
       $plugindir = get_option('siteurl') . '/' . PLUGINDIR . '/' . basename(dirname(__FILE__));
-      $why = addslashes("<a href='http://buy.thulasidas.com/$name' title='" . sprintf(__("Pro version of the %s plugin", 'easy-ads'), $name) . "'><img src='$plugindir/img/ezpaypal.png' border='0' alt='ezPayPal -- Instant PayPal Shop.' class='alignright' /></a><br />") .
+      $why = addslashes("<a href='http://buy.thulasidas.com/$name' title='" . sprintf(__("Pro version of the %s plugin", 'easy-ads'), $name) . "'><img src='$plugindir/img/ezpaypal.png' style='border:0' alt='ezPayPal -- Instant PayPal Shop.' class='alignright' /></a><br />") .
               $this->why;
       echo "<li>" . ezTab::makeTextWithTooltip($text, $this->title, $value, 350, false);
       if ($price >= 0) {
@@ -502,7 +518,7 @@ if (!class_exists("ezOption")) {
       if (!empty($this->before)) {
         echo $this->before, "\n";
       }
-      echo '<div><ul class="tabs" name="tabs" id="' . $this->name . '_miniTabs">' . "\n";
+      echo '<div><ul class="tabs" id="' . $this->name . '_miniTabs">' . "\n";
       $class = 'class="current"';
       foreach ($this->mTabs as $mTab) {
         echo '<li><a href="#" ' . $class . ' id="mtab_' . $mTab->name . '_link">' .
@@ -554,11 +570,11 @@ if (!class_exists("ezTab")) {
         $pluginName = $this->plugin->pluginName;
       }
       $this->optionName = ezNS::$genOptionName . '-' . $this->name;
-      $this->options = get_option($this->optionName);
+      $this->options = ezGetOption($this->optionName, $this->options);
       if (empty($this->options)) {
         $this->defineOptions();
         if (!empty($this->options)) {
-          update_option($this->optionName, $this->options);
+          ezUpdateOption($this->optionName, $this->options);
         }
       }
       $this->isActive = true;
@@ -598,7 +614,7 @@ if (!class_exists("ezTab")) {
         $this->options = array_merge($this->options, $intersection);
       }
       if (!empty($this->options)) {
-        update_option($this->optionName, $this->options);
+        ezUpdateOption($this->optionName, $this->options);
       }
     }
 
@@ -607,7 +623,7 @@ if (!class_exists("ezTab")) {
       unset($this->options);
       $this->defineOptions();
       if (!empty($this->options)) {
-        update_option($this->optionName, $this->options);
+        ezUpdateOption($this->optionName, $this->options);
       }
     }
 
@@ -619,7 +635,7 @@ if (!class_exists("ezTab")) {
       if (empty($this->options)) {
         $this->defineOptions();
         if (!empty($this->options)) {
-          update_option($this->optionName, $this->options);
+          ezUpdateOption($this->optionName, $this->options);
         }
       }
 
@@ -692,7 +708,7 @@ if (!class_exists("ezTab")) {
                 foreach ($this->options as $key => $opt) {
                   $opt->updateValue();
                 }
-                update_option($this->optionName, $this->options);
+                ezUpdateOption($this->optionName, $this->options);
                 $this->submitMessage .= '<div class="updated"><p><strong>' .
                         $this->name . ' ' .
                         __('Settings have been updated in the database.', 'easy-ads') .
@@ -709,7 +725,7 @@ if (!class_exists("ezTab")) {
               delete_option($this->optionName);
               unset($this->options);
               $this->defineOptions();
-              update_option($this->optionName, $this->options);
+              ezUpdateOption($this->optionName, $this->options);
               $this->submitMessage .= '<div class="updated"><p><strong>' . $this->name .
                       ' Settings have been reset to the defaults!</strong></p> </div>';
               break;
@@ -810,7 +826,7 @@ if (!class_exists("ezTab")) {
       }
       $style = '';
       if ($underline) {
-        $style = "style='text-decoration:underline'";
+        $style = "style='text-decoration:underline' ";
       }
       $return = "<span  $style" .
               "onmouseover=\"Tip('" . htmlspecialchars($tip) . "', " .
@@ -923,19 +939,19 @@ if (!class_exists("EzAdminTab")) {
                 foreach ($this->options as $key => $opt) {
                   $opt->updateValue();
                 }
-                update_option($this->optionName, $this->options);
+                ezUpdateOption($this->optionName, $this->options);
                 // apply the active flags
                 foreach ($ezPlugin->tabs as $key => $p) {
                   if (!$p->isAdmin) {
                     $isActive = $this->options[$p->name]->get();
                     $p->isActive = $isActive;
                     $p->set('active', $isActive);
-                    update_option($p->optionName, $p->options);
+                    ezUpdateOption($p->optionName, $p->options);
                   }
                 }
                 $pluginVersion = $ezPlugin->getVersion();
                 $ezPlugin->genOptions['Version'] = $pluginVersion;
-                update_option($ezPlugin->genOptionName, $ezPlugin->genOptions);
+                ezUpdateOption($ezPlugin->genOptionName, $ezPlugin->genOptions);
                 $this->submitMessage .= '<div class="updated"><p><strong>' .
                         $this->name . ' ' .
                         __('Settings have been updated in the database.', 'easy-ads') .
@@ -956,7 +972,7 @@ if (!class_exists("EzAdminTab")) {
               delete_option(ezNS::$genOptionName);
               $pluginVersion = $ezPlugin->getVersion();
               $ezPlugin->genOptions['Version'] = $pluginVersion;
-              update_option($ezPlugin->genOptionName, $ezPlugin->genOptions);
+              ezUpdateOption($ezPlugin->genOptionName, $ezPlugin->genOptions);
               $this->submitMessage .= '<div class="updated"><p><strong>' .
                       __('All Settings have been reset to the defaults!', 'easy-ads') .
                       '</strong></p> </div>';
@@ -967,7 +983,7 @@ if (!class_exists("EzAdminTab")) {
               }
               $pluginVersion = $ezPlugin->getVersion();
               $ezPlugin->genOptions['Version'] = $pluginVersion;
-              update_option($ezPlugin->genOptionName, $ezPlugin->genOptions);
+              ezUpdateOption($ezPlugin->genOptionName, $ezPlugin->genOptions);
               $this->submitMessage .= '<div class="updated"><p><strong>' .
                       sprintf(__('All Settings have been migrated to version %s.', 'easy-ads'), $pluginVersion) .
                       '</strong></p> </div>';
@@ -1150,9 +1166,9 @@ if (!class_exists("ezAbout")) {
   // End: Class ezAbout
 }
 
-if (!class_exists("ezPlugin")) {
+if (!class_exists("ezAdsPlugin")) {
 
-  class ezPlugin {
+  class ezAdsPlugin {
 
     var $defaults, $tabID, $submitMessage, $errorMessage;
     var $name, $CWD, $URL, $baseName, $genOptionName;
@@ -1163,7 +1179,7 @@ if (!class_exists("ezPlugin")) {
     var $middle = array();
     var $bottom = array();
 
-    function ezPlugin($buildTabs = true) { // Constructor
+    function ezAdsPlugin($buildTabs = true) { // Constructor
       $this->CWD = ezNS::$CWD;
       $this->baseName = ezNS::$baseName;
       $this->URL = ezNS::$URL;
@@ -1233,7 +1249,7 @@ if (!class_exists("ezPlugin")) {
       }
       $pluginVersion = $this->getVersion();
       $this->genOptions['Version'] = $pluginVersion;
-      update_option($this->genOptionName, $this->genOptions);
+      ezUpdateOption($this->genOptionName, $this->genOptions);
     }
 
     function resetOptions() {
@@ -1292,7 +1308,7 @@ if (!class_exists("ezPlugin")) {
           $this->resetOptions();
         }
         $this->genOptions['Version'] = $pluginVersion;
-        update_option($this->genOptionName, $this->genOptions);
+        ezUpdateOption($this->genOptionName, $this->genOptions);
         return $submitMessage;
       }
     }
@@ -1318,7 +1334,7 @@ if (!class_exists("ezPlugin")) {
         $this->tabs[$k]->handleSubmits();
       }
 
-      $this->genOptions = get_option(ezNS::$genOptionName);
+      $this->genOptions = ezGetOption(ezNS::$genOptionName, $this->genOptions);
       ezNS::$genOptions = $this->genOptions; // in case handleSubmits changed options
       $pluginVersion = $this->getVersion();
       $this->submitMessage .= $this->handleOptionMigration($pluginVersion);
@@ -1326,7 +1342,7 @@ if (!class_exists("ezPlugin")) {
       echo $this->errorMessage;
       $this->showOptionMigration($pluginVersion);
 
-      echo '<div><ul class="tabs" name="tabs" id="tabs">' . "\n";
+      echo '<div><ul class="tabs" id="tabs">' . "\n";
       $this->tabID = 0;
       $class = 'class="current"';
       foreach ($this->tabs as $p) {

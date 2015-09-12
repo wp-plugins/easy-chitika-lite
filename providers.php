@@ -66,8 +66,8 @@ if (!class_exists("provider")) {
       unset($this->options);
       $option = &$this->addOption('message', 'intro');
       $properties = array('desc' => sprintf(__("About %s", 'easy-ads'), $this->name),
-          'before' => '<br /><table><tr><th colspan="3"><h4>',
-          'after' => '</h4></th></tr><tr align="left" valign="middle"><td width="20%">');
+          'before' => '<br /><table><tr><th colspan="3"><b>',
+          'after' => '</b></th></tr><tr style="text-align:left;vertical-align:middle"><td style="width:20%">');
       $option->set($properties);
 
       $option = &$this->addOption('checkbox', 'active');
@@ -80,21 +80,13 @@ if (!class_exists("provider")) {
       $option->set($properties);
 
       $option = &$this->addOption('message', 'referral');
-      $referral = '';
-      if (!empty($this->referral)) {
-        $referral = htmlspecialchars_decode($this->referral);
-      }
-      $properties = array('desc' => $referral,
-          'before' => '</td><td width="20%">&nbsp;',
+      $properties = array('desc' => $this->referral,
+          'before' => '</td><td style="width:20%">&nbsp;',
           'after' => '</td>');
       $option->set($properties);
 
       $option = &$this->addOption('message', 'info');
-      $desc = '';
-      if (!empty($this->desc)) {
-        $desc = htmlspecialchars_decode($this->desc);
-      }
-      $properties = array('desc' => $desc,
+      $properties = array('desc' => $this->desc,
           'before' => '<td >',
           'after' => '</td></tr></table><hr />');
       $option->set($properties);
@@ -104,7 +96,7 @@ if (!class_exists("provider")) {
       $properties = array('desc' => __('Tabbie', 'easy-ads'),
           'title' => __(" tab interface ", 'easy-ads'),
           'value' => $this->name,
-          'before' => '<table><tr align="center" valign="top"><td width="50%"><br />',
+          'before' => '<table style="border-collapse:separate;border-spacing:10px;"><tr style="text-align:left;vertical-align:top"><td style="width:50%"><br />',
           'after' => '</td>');
       $miniTab->set($properties);
 
@@ -158,8 +150,8 @@ if (!class_exists("provider")) {
       $option = &$this->addOption('message', 'alignment');
       $properties = array(
           'desc' => "<b>" . __("Ad Alignment. Where to show ad blocks?", 'easy-ads') . "</b>",
-          'before' => '<td><table><tr align="center" valign="middle"><th colspan="5">',
-          'after' => "</th></tr>\n" . '<tr align="center" valign="middle">' .
+          'before' => '<td><table><tr style="text-align:center;vertical-align:middle"><th colspan="5">',
+          'after' => "</th></tr>\n" . '<tr style="text-align:center;vertical-align:middle">' .
           '<td>&nbsp;</td><td>&nbsp;Align Left&nbsp;</td><td>&nbsp;Center&nbsp;</td>' .
           '<td>&nbsp;Align Right&nbsp;</td><td>&nbsp;Suppress&nbsp;</td></tr>');
       $option->set($properties);
@@ -169,7 +161,7 @@ if (!class_exists("provider")) {
       $properties = array('desc' => __('Top', 'easy-ads'),
           'title' => __('Where to show the top ad block?', 'easy-ads'),
           'value' => "left",
-          'before' => '<tr align="center" valign="middle"><td>Top</td>',
+          'before' => '<tr style="text-align:center;vertical-align:middle"><td>Top</td>',
           'after' => '</tr>');
       $radio->set($properties);
 
@@ -202,7 +194,7 @@ if (!class_exists("provider")) {
       $properties = array('desc' => __('Middle', 'easy-ads'),
           'title' => __('Where to show the mid-text ad block?', 'easy-ads'),
           'value' => "left",
-          'before' => '<tr align="center" valign="middle"><td>Middle</td>',
+          'before' => '<tr style="text-align:center;vertical-align:middle"><td>Middle</td>',
           'after' => '</tr>');
       $radio->set($properties);
 
@@ -236,7 +228,7 @@ if (!class_exists("provider")) {
           'title' => __('Where to show the bottom ad block?', 'easy-ads'),
           'value' => "right",
           'after' => '<br />',
-          'before' => '<tr align="center" valign="middle"><td>Bottom</td>',
+          'before' => '<tr style="text-align:center;vertical-align:middle"><td>Bottom</td>',
           'after' => '</tr></table>');
       $radio->set($properties);
 
@@ -268,7 +260,7 @@ if (!class_exists("provider")) {
       $option = &$this->addOption('message', 'show_or_hide');
       $properties = array(
           'desc' => "<b>" . __("Suppress Ad Blocks in:", 'easy-ads') . "</b>",
-          'before' => '<table><tr align="center" valign="middle"><td>',
+          'before' => '<table><tr style="text-align:left;vertical-align:middle"><td>',
           'after' => '</td><td></td></tr>');
       $option->set($properties);
 
@@ -558,7 +550,7 @@ if (!class_exists("providerWidget")) {
       $plgName = $provider->plugin->name;
       $widget_ops = array('classname' => 'providerWidget',
           'description' => sprintf(__("Show %s (%s) block in your sidebar as a widget.", 'easy-ads'), $plgName, $provider->name));
-      parent::WP_Widget($name, "$plgName: " . $provider->name, $widget_ops);
+      parent::__construct($name, "$plgName: {$provider->name}", $widget_ops);
       $this->slug = strtolower(strtr($plgName, ' ', '-'));
     }
 
@@ -664,23 +656,20 @@ if (!class_exists('Overview')) {
               ezTab::makeLIwithTooltip(__('Ad Block Customization', 'easy-ads'), __('Right now, all the ad blocks are designed to display the same ad code, for which the providers will serve different text. In a future release, I will give you a means of introducing different texts for different locations, possibly in a tabbed interface.', 'easy-ads')) .
               ezTab::makeLIwithTooltip(__('Internationalization', 'easy-ads'), __('Future versions will provide MO/PO files for internationalization.', 'easy-ads')) .
               "</ul><br />\n";
-      echo '<table width="95%">', "\n";
-      echo '<tr align="center" valign="middle">', "\n";
-      echo '<td width="46%">', "\n";
-      echo '<table width="100%">', "\n";
-      echo '<tr align="center" valign="middle">', "\n";
-      echo '<td align="left">', "\n";
+      echo '<table style="width:95%">', "\n";
+      echo '<tr style="text-align:center;vertical-align:middle">', "\n";
+      echo '<td style="width:46%">', "\n";
+      echo '<table style="width:100%">', "\n";
+      echo '<tr style="text-align:center;vertical-align:middle">', "\n";
+      echo '<td style="text-align:left">', "\n";
       echo $instructionText;
       echo $fetureText;
       echo $planText;
-      echo '<table><tr>';
-      $ez = $ezPlugin->ez;
-      include ('head-text.php');
-      echo '</tr></table>';
+
       echo "</td></tr></table>\n";
       echo "</td>\n";
-      echo '<td width="54%">', "\n";
-      echo '<table width="100%">';
+      echo '<td style="width:54%">', "\n";
+      echo '<table style="width:100%">';
       echo '<tr><th colspan="2">' .
       __('The following providers are supported', 'easy-ads') .
       '</th></tr>', "\n";
@@ -688,18 +677,23 @@ if (!class_exists('Overview')) {
         $ezPlugin = & $this->plugin;
         foreach ($ezPlugin->tabs as $p) {
           if (!$p->isAdmin) {
-            echo '<tr align="center" valign="middle">', "\n";
-            echo '<td width="33%">';
-            echo htmlspecialchars_decode($p->referral);
+            echo '<tr style="text-align:center;vertical-align:middle">', "\n";
+            echo '<td style="width:33%">';
+            echo $p->referral;
             echo "<br /><br /></td>\n";
-            echo "<td align='left'>", $p->options['info']->desc, "</td>\n";
+            echo "<td style='text-align:left'>", $p->options['info']->desc, "</td>\n";
             echo "</tr>\n";
           }
         }
       }
       echo "</table></td>\n";
-
       echo "</tr></table>\n";
+
+      echo '<table style="width:80%;margin-left:auto;margin-right:auto;"><tr style="vertical-align:top">';
+      $ez = $ezPlugin->ez;
+      include ('head-text.php');
+      echo '</tr></table>';
+
       echo "<form method='post' action='#'>";
       $ezPlugin->ezTran->renderTranslator();
       echo "</form>";
@@ -750,13 +744,13 @@ if (!class_exists('Admin')) {
               __("Click to close", 'easy-ads') .
               "', STICKY, 1, CLOSEBTN, true, CLICKCLOSE, true)\" onmouseout=\"UnTip()\">" .
               __("Hover on the picture to see details", 'easy-ads') .
-              "<br /><br /><img src='" . $url . "/ad-slots-small.gif' border='0' alt='[ad-slots-small]' /></span>";
-      echo '<table width="95%" style="padding:10px;border-spacing:10px;">' . "\n";
-      echo '<tr><th colspan="2"><h3>' .
+              "<br /><br /><img src='" . $url . "/ad-slots-small.gif' style='border:0' alt='[ad-slots-small]' /></span>";
+      echo '<table style="width:95%;padding:10px;border-spacing:10px;">' . "\n";
+      echo '<tr><th colspan="2"><b>' .
               __('General Information', 'easy-ads') .
-              '</h3></th></tr>' . "\n";
-      echo '<tr align="center" valign="middle">', "\n";
-      echo '<td align="left" width="50%">', "\n";
+              '</b></th></tr>' . "\n";
+      echo '<tr style="text-align:center;vertical-align:middle">', "\n";
+      echo '<td style="width:50%;text-align:left">', "\n";
       echo $infoText;
       echo "</td>\n";
       echo "<td>\n";
@@ -768,9 +762,9 @@ if (!class_exists('Admin')) {
       echo "<td>\n";
       echo $compText;
       echo "</td></tr>\n";
-      echo '<tr><th colspan="2"><h3>' .
+      echo '<tr><th colspan="2"><b>' .
               __('Global Options', 'easy-ads') .
-              '</h3></th></tr>', "\n";
+              '</b></th></tr>', "\n";
       echo "</table>\n";
     }
 
