@@ -4,7 +4,7 @@ Donate link: http://buy.thulasidas.com/easy-chitika
 Tags: chitika, ad, ads, advertising, income
 Requires at least: 3.2
 Tested up to: 4.3
-Stable tag: 2.70
+Stable tag: 2.71
 License: GPL2 or later
 
 Easy Chitika showcases Chitika ads on your blog, with full customization.
@@ -42,7 +42,8 @@ Major changes to fix HTML5 validation errors.
 == Screenshots ==
 
 1. *Easy Chitika* "Overview" tab.
-2. How to set the options for Chitika.
+2. Admin tab showing ad slot locations
+3. How to set the options for Chitika.
 
 == Installation ==
 
@@ -96,6 +97,7 @@ Please report any problems, and share your thoughts and comments [at the plugin 
 
 == Change Log ==
 
+* V2.71: Documentation changes. [Sep 13, 2015]
 * V2.70: Major changes to fix HTML5 validation errors. [Sep 10, 2015]
 * V2.60: Compatibility with WordPress 4.3. [Aug 10, 2015]
 * V2.50: Compatibility with WordPress 4.2. [April 25, 2015]

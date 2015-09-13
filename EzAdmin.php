@@ -265,7 +265,7 @@ $moreInfo
       $s4 = __('Pro Version', 'easy-common');
       $s5 = __('Buy the Pro Version', 'easy-common');
 
-      echo "<div style='background-color:#ffcccc;padding:5px;border:solid 1px;height:115px;overflow-y:auto;margin:0;min-width:280px'><div style='font-size:14px;color:#a48;font-variant: small-caps;text-decoration:underline;text-align:center;'><b>$s4</b></div><div  onmouseover=\"TagToTip('pro', WIDTH, 300, TITLE, '$s5',STICKY, 1, CLOSEBTN, true, CLICKCLOSE, true, FIX, [this, 0, 55])\">";
+      echo "<div style='background-color:#ffcccc;padding:5px;border:solid 1px;height:115px;overflow-y:auto;margin:0;width:280px'><div style='font-size:14px;color:#a48;font-variant: small-caps;text-decoration:underline;text-align:center;'><b>$s4</b></div><div  onmouseover=\"TagToTip('pro', WIDTH, 300, TITLE, '$s5',STICKY, 1, CLOSEBTN, true, CLICKCLOSE, true, FIX, [this, -15, -90])\">";
 
       $s8 = sprintf(__('It costs only $%.2f!', 'easy-common'), $price);
       $s9 = __('Instant download link.', 'easy-common');
@@ -273,7 +273,7 @@ $moreInfo
         $value .= '<b><i> Pro</i></b>';
         $s6 = sprintf(__("You are enjoying $value with \"Pro\" features.", 'easy-common'), $value);
         $s7 = __("Please consider buying it, if you haven't already paid for it.", 'easy-common');
-        echo "$s6 $s7 <a href='http://buy.thulasidas.com/$slug' title='$s3. $s9' $onclick>$s8</a></div><div style='text-align:center;'>[<strong onmouseover=\"Tip('Other Premium Plugins from the same author')\" onmouseout=\"UnTip()\"><a href='http://www.thulasidas.com/plugins' class='popup' data-height='1024' data-width='1200' target='_blank'>Other Plugins</a></strong>]</div>";
+        echo "$s6 $s7 <a href='http://buy.thulasidas.com/$slug' title='$s3. $s9' $onclick>$s8</a></div><br><div style='text-align:center;'>[<strong onmouseover=\"Tip('Other Premium Plugins from the same author')\" onmouseout=\"UnTip()\"><a href='http://www.thulasidas.com/plugins' class='popup' data-height='1024' data-width='1200' target='_blank'>Other Plugins</a></strong>]</div>";
       }
       else {
         $value .= '<b><i> Lite</i></b>';
@@ -287,7 +287,7 @@ $moreInfo
         $s11 = __("Consider buying it.", 'easy-common');
         $moreInfo = "[<strong onmouseover=\"Tip('Read more about $proValue at Unreal Blog')\" onmouseout=\"UnTip()\"><a href='http://www.thulasidas.com/plugins/$slug' title='More info about it at Unreal Blog' class='popup' data-height='1024' data-width='1200'>More Info</a></strong>]&emsp;";
         $buyNow = "[<strong onmouseover=\"Tip('Get $proValue for \$$price')\" onmouseout=\"UnTip()\"><a href='http://buy.thulasidas.com/$slug' title='Get it now for \$$price' class='popup'>Buy Now!</a></strong>]&emsp;";
-        $dlPro = "[<strong onmouseover=\"Tip('Download $proValue. If you have already purchased the Pro version, you can find your download link here.', WIDTH, 200)\" onmouseout=\"UnTip()\"><a href='http://buy.thulasidas.com/update.php' title='If you have already purchased the Pro version, you can find your download link here.' class='popup'>Download</a></strong>]";
+        $dlPro = "[<strong onmouseover=\"Tip('Download $proValue. If you have already purchased it, you can find your download link here.', WIDTH, 200)\" onmouseout=\"UnTip()\"><a href='http://buy.thulasidas.com/update.php' title='If you have already purchased the Pro version, you can find your download link here.' class='popup'>Download</a></strong>]";
         echo "$s10 $filter $s11 <a href='http://buy.thulasidas.com/$slug' title='$s3. $s9' $onclick>$s8</a></div><br><div style='text-align:center;'>$moreInfo$demo$buyNow$dlPro</div>";
       }
       echo "</div>";
