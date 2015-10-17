@@ -31,11 +31,11 @@ if (!class_exists('EzAdmin')) {
             'name' => 'EZ PayPal',
             'desc' => 'Your own e-shop for Digital Goods'),
         array('key' => 'easy-adsense',
-            'name' => 'Easy AdSense Ultra',
-            'desc' => 'Bootstrap/AJAX version of Easy AdSense'),
+            'name' => 'Easy AdSense Pro',
+            'desc' => 'AJAX version of Easy AdSense'),
         array('key' => 'google-adsense',
             'name' => 'Google AdSense Ultra',
-            'desc' => 'The Ultimate AdSense plugin - Combines Easy AdSense, AdSense Now! and Google AdSense in one sleek, modern interface.'));
+            'desc' => 'The Ultimate AdSense plugin'));
 
     function __construct($plg, $slug, $plgURL) {
       $this->plg = $plg;
@@ -265,7 +265,7 @@ $moreInfo
       $s4 = __('Pro Version', 'easy-common');
       $s5 = __('Buy the Pro Version', 'easy-common');
 
-      echo "<div style='background-color:#ffcccc;padding:5px;border:solid 1px;height:115px;overflow-y:auto;margin:0;width:280px'><div style='font-size:14px;color:#a48;font-variant: small-caps;text-decoration:underline;text-align:center;'><b>$s4</b></div><div  onmouseover=\"TagToTip('pro', WIDTH, 300, TITLE, '$s5',STICKY, 1, CLOSEBTN, true, CLICKCLOSE, true, FIX, [this, -15, -90])\">";
+      echo "<div style='background-color:#ffcccc;padding:5px;border:solid 1px;height:115px;overflow-y:auto;margin:0;width:300px'><div style='font-size:14px;color:#a48;font-variant: small-caps;text-decoration:underline;text-align:center;'><b>$s4</b></div><div  onmouseover=\"TagToTip('pro', WIDTH, 300, TITLE, '$s5',STICKY, 1, CLOSEBTN, true, CLICKCLOSE, true, FIX, [this, -15, -90])\">";
 
       $s8 = sprintf(__('It costs only $%.2f!', 'easy-common'), $price);
       $s9 = __('Instant download link.', 'easy-common');
@@ -485,7 +485,7 @@ ENDDIVS;
     }
 
     function renderSupport() {
-      echo '<div style="background-color:#fcf;padding:5px;border: solid 1px;margin:5px;">
+      echo '<div style="background-color:#fdf;padding:5px;border: solid 1px;margin:5px;">
 ';
       $plg = $this->plg;
       $slug = $this->slug;
@@ -533,7 +533,7 @@ ENDDIVS;
       $moreInfo = " &nbsp;  &nbsp; <a href='$infoURL' title='$s2' target=_blank class='popup' data-height='1024'> $s4 </a>&nbsp; <a href='$buyURL' $onclick title='$s3'>Get Pro Version</a>";
       $toolTip .= addslashes('<br />' . $moreInfo);
       $why = addslashes($plg['pro']);
-      echo '<div style="background-color:#cff;padding:5px;border: solid 1px;margin:5px;padding-bottom:15px;">';
+      echo '<div style="background-color:#dff;padding:5px;border: solid 1px;margin:5px;padding-bottom:15px;">';
       if ($short) {
         $s5 = __('Buy the Pro Version', 'easy-common');
         $s6 = __('More features, more power!', 'easy-common');

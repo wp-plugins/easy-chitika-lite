@@ -461,7 +461,7 @@ EOF;
         global $l10n;
         unset($l10n[$this->domain]);
         $this->adminMsg = "<div class='updated'><p><strong>Ok, in English for now."
-                . " <input type='button' value='Switch Back' onClick='location.reload(true)'></strong></p> </div>";
+                . " <input class='button-secondary' type='button' value='Switch Back' onClick='location.reload(true)'></strong></p> </div>";
         return $adminNeeded;
       }
       $adminNeeded = true;
@@ -532,7 +532,7 @@ EOF;
           }
         }
         else {
-          $this->status = '<div style="background-color:#cff;padding:5px;margin:5px;border:solid 1px;margin-top:10px;font-weight:bold;color:red">In the <a href="http://buy.thulasidas.com/easy-translator">Pro Version</a>, the Pot file would have been sent to the plugin author.<br />In this Lite version, please download the PO file (using the "Display &amp; Save POT File" button above) and email it using your mail client.</div><br />';
+          $this->status = '<div style="background-color:#dff;padding:5px;margin:5px;border:solid 1px;margin-top:10px;font-weight:bold;color:red">In the <a href="http://buy.thulasidas.com/easy-translator">Pro Version</a>, the Pot file would have been sent to the plugin author.<br />In this Lite version, please download the PO file (using the "Display &amp; Save POT File" button above) and email it using your mail client.</div><br />';
         }
         return $adminNeeded;
       }
@@ -563,7 +563,7 @@ EOF;
       else {
         $backButtonVal = "Go Back to Easy Translator";
       }
-      $backButton = "<br /><b>If you are done with translating, <input type='button' value='$backButtonVal' onClick='location.reload(true)'><br />You can continue later, and your translation for the session will be remembered until you close the browser window.</b>";
+      $backButton = "<br /><b>If you are done with translating, <input class='button-secondary' type='button' value='$backButtonVal' onClick='location.reload(true)'><br />You can continue later, and your translation for the session will be remembered until you close the browser window.</b>";
       echo '<div class="wrap" style="width:1000px">';
       echo '<form method="post" action="#">';
       wp_nonce_field('ezTranSubmit', 'ezTranNonce');
@@ -664,14 +664,14 @@ EOF;
         $useGoogle = '';
       }
       $makeStr = '<div class="submit">
-<input type="submit" name="ezt-make" value="Display &amp; Save POT File" title="Make a POT file with the translation strings below and display it" />&nbsp;
-<input type="submit" name="ezt-clear" value="Reload Translation" title="Discard your changes and reload the translation" onmouseover = "Tip(\'' . $tip . '\',WIDTH, 300)" onmouseout="UnTip()" onclick="return confirm(\'Are you sure you want to discard your changes?\nThe page may take a few minutes to reload because we may be querying Google for translations for each translatable string in the plugin files.\nPlease be patient or uncheck the Use Google option, if available.\');" />&nbsp;'
+<input class="button-secondary" type="submit" name="ezt-make" value="Display &amp; Save POT File" title="Make a POT file with the translation strings below and display it" />&nbsp;
+<input class="button-secondary" type="submit" name="ezt-clear" value="Reload Translation" title="Discard your changes and reload the translation" onmouseover = "Tip(\'' . $tip . '\',WIDTH, 300)" onmouseout="UnTip()" onclick="return confirm(\'Are you sure you want to discard your changes?\nThe page may take a few minutes to reload because we may be querying Google for translations for each translatable string in the plugin files.\nPlease be patient or uncheck the Use Google option, if available.\');" />&nbsp;'
               . $useGoogle .
               '</div>' . $this->status . $this->error;
       $saveStr = '<div class="submit">
-<input type="submit" name="ezt-savePot" value="Save POT file" title="Saves the strings shown below to your PC as a POT file" />&nbsp;
-<input type="submit" name="ezt-mailPot" value="Mail POT file" title="Email the translation to the plugin autor" onClick="return confirm(\'Are you sure you want to email the author?\');" />&nbsp;
-<input type="submit" name="ezt-editMore" value="Edit More" title="If you are not happy with the strings, edit it further"/>
+<input class="button-secondary" type="submit" name="ezt-savePot" value="Save POT file" title="Saves the strings shown below to your PC as a POT file" />&nbsp;
+<input class="button-secondary" type="submit" name="ezt-mailPot" value="Mail POT file" title="Email the translation to the plugin autor" onClick="return confirm(\'Are you sure you want to email the author?\');" />&nbsp;
+<input class="button-secondary" type="submit" name="ezt-editMore" value="Edit More" title="If you are not happy with the strings, edit it further"/>
 </div>' . $this->status . $this->error;
       if (isset($_POST['ezt-make'])) {
         echo "<div style='background-color:#eef;border: solid 1px #005;padding:5px'>If you are happy with the POT file as below, please save it or email it to the author. If not, edit it further. $backButton</div>";
@@ -713,7 +713,7 @@ EOF1;
       $tipPot = htmlentities("If you would like to use your own tools to translate (such as <code>poedit</code>), please download the POT file here. Once done with the translation, please send the po file to the plugin author: <code>manoj at thulasidas dot com</code>");
       if ($this->state == "Not Translated") {
         $tip = htmlentities("It is easy to have <b>$plgName</b> in your language. All you have to do is to translate some strings, and email the file to the author.<br /><br />If you would like to help, please use the translation interface. It picks up the translatable strings in <b>$plgName</b> and presents them (and their existing translations in <b>$locale</b>, if any) in an easy-to-edit form. You can then generate a translation file and email it to the author all from the same form. $patience");
-        $invite = "<span style='color:red'> Would you like to see <b>$plgName</b> in your langugage (<b>$locale</b>)?&nbsp; <input type='submit' name='ezt-translate' onmouseover=\"Tip('$tip', WIDTH, 350, TITLE, 'How to Translate?', STICKY, 1, CLOSEBTN, true, CLICKCLOSE, true, FIX, [this, 0, 5])\" onmouseout=\"UnTip()\" value ='Please help translate ' /></span>";
+        $invite = "<span style='color:red'> Would you like to see <b>$plgName</b> in your langugage (<b>$locale</b>)?&nbsp; <input class='button-secondary' type='submit' name='ezt-translate' onmouseover=\"Tip('$tip', WIDTH, 350, TITLE, 'How to Translate?', STICKY, 1, CLOSEBTN, true, CLICKCLOSE, true, FIX, [this, 0, 5])\" onmouseout=\"UnTip()\" value ='Please help translate ' /></span>";
       }
       else if ($this->state == "English") {
         $tip = htmlentities("If you would like to translate this plugin into a language you know or speak, please use the translation interface. It picks up the translatable strings in <b>$plgName</b> and presents them and their existing translations in your chosen language in an easy-to-edit form. You can then generate a translation file and email it to the author all from the same form. $patience");
@@ -807,15 +807,15 @@ EOF1;
         $invite = "If you speak another language, please help translate this plugin. You can either use our web interface or download the POT files.<br />"
                 . "Select a language: <select name='ezt-createpo'>$langOptions</select>&nbsp;"
                 . "&nbsp;<span onmouseover=\"Tip('By default, the translator will query Google Translator for each string it cannot find a translation of. This may take a few minutes. If you would rather not wait, please uncheck this option.', WIDTH, 350, TITLE, 'Query Google?', STICKY, 1, CLOSEBTN, true, CLICKCLOSE, true, FIX, [this, 0, 5])\" onmouseout=\"UnTip()\"><input type='checkbox' name='ezt-google' checked='checked' />&nbsp;Use Google? </span>&nbsp;"
-                . "&nbsp;<input type='submit' name='ezt-translate' onmouseover=\"Tip('$tip', WIDTH, 350, TITLE, 'How to Translate?', STICKY, 1, CLOSEBTN, true, CLICKCLOSE, true, FIX, [this, 0, 5])\" onmouseout=\"UnTip()\" value ='Use Web Interface'/> &nbsp;"
-                . "&nbsp;<input type='submit' name='ezt-download' onmouseover=\"Tip('$tipPot', WIDTH, 350, TITLE, 'How to Use POT files?', STICKY, 1, CLOSEBTN, true, CLICKCLOSE, true, FIX, [this, 0, 5])\" onmouseout=\"UnTip()\" value ='Download POT files'/> ";
+                . "&nbsp;<input class='button-secondary' type='submit' name='ezt-translate' onmouseover=\"Tip('$tip', WIDTH, 350, TITLE, 'How to Translate?', STICKY, 1, CLOSEBTN, true, CLICKCLOSE, true, FIX, [this, 0, 5])\" onmouseout=\"UnTip()\" value ='Use Web Interface'/> &nbsp;"
+                . "&nbsp;<input class='button-secondary' type='submit' name='ezt-download' onmouseover=\"Tip('$tipPot', WIDTH, 350, TITLE, 'How to Use POT files?', STICKY, 1, CLOSEBTN, true, CLICKCLOSE, true, FIX, [this, 0, 5])\" onmouseout=\"UnTip()\" value ='Download POT files'/> ";
       }
       else {
         $tip = htmlentities("If you would like to improve this translation, please use the translation interface. It picks up the translatable strings in <b>$plgName</b> and presents them and their existing translations in <b>$locale</b> in an easy-to-edit form. You can then generate a translation file and email it to the author all from the same form. $patience");
         $invite = "<span style='color:red'> Would you like to improve this translation of <b>$plgName</b> in your langugage (<b>$locale</b>)?</span><br />"
                 . "&nbsp;<span onmouseover=\"Tip('By default, the translator will query Google Translator for each string it cannot find a translation of. This may take a few minutes. If you would rather not wait, please uncheck this option.', WIDTH, 350, TITLE, 'Query Google?', STICKY, 1, CLOSEBTN, true, CLICKCLOSE, true, FIX, [this, 0, 5])\" onmouseout=\"UnTip()\"><input type='checkbox' name='ezt-google' checked='checked' />&nbsp;Use Google? </span>&nbsp;"
-                . "&nbsp;<input type='submit' name='ezt-translate' onmouseover=\"Tip('$tip', WIDTH, 350, TITLE, 'How to Translate?', STICKY, 1, CLOSEBTN, true, CLICKCLOSE, true, FIX, [this, 0, 5])\" onmouseout=\"UnTip()\" value='Improve $locale translation' />&nbsp;"
-                . "&nbsp;<input type='submit' name='ezt-download' onmouseover=\"Tip('$tipPot', WIDTH, 350, TITLE, 'How to Use POT files?', STICKY, 1, CLOSEBTN, true, CLICKCLOSE, true, FIX, [this, 0, 5])\" onmouseout=\"UnTip()\" value ='Download POT files'/> ";
+                . "&nbsp;<input class='button-secondary' type='submit' name='ezt-translate' onmouseover=\"Tip('$tip', WIDTH, 350, TITLE, 'How to Translate?', STICKY, 1, CLOSEBTN, true, CLICKCLOSE, true, FIX, [this, 0, 5])\" onmouseout=\"UnTip()\" value='Improve $locale translation' />&nbsp;"
+                . "&nbsp;<input class='button-secondary' type='submit' name='ezt-download' onmouseover=\"Tip('$tipPot', WIDTH, 350, TITLE, 'How to Use POT files?', STICKY, 1, CLOSEBTN, true, CLICKCLOSE, true, FIX, [this, 0, 5])\" onmouseout=\"UnTip()\" value ='Download POT files'/> ";
       }
       $invite .= '<input type="hidden" name="ezt-slug" value="' . $this->slug . '" />';
       return $invite;

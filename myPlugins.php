@@ -81,6 +81,15 @@ $myPlugins['plugin-check'] = array('value' => 'Plugin Check',
     'title' => '<em><strong>Plugin Check</strong></em> examines any plugin on your blog, whether active or not, and reports possible undefined functions and methods through a static analysis.',
     'pro' => 'The Lite version of <em><strong>Plugin Check</strong></em> is fully functional. In the Pro version, you get many more options to fine-tune your pseudo compilation. You can automatically run a series of checks (copied from the excellent Theme Check plugin) and upload plugins/apps to a temporary area to conduct your analysis without polluting your blog installation. All this is done on a beautifully designed interface based the fully responsive twitter-bootstrap framework. ');
 
+$myPlugins['cdn-buster'] = array('value' => 'CDN Buster',
+    'price' => '5.95',
+    'share' => false,
+    'long' => false,
+    'blurb' => '<em><strong>CDN Buster</strong></em> helps you invalidate your CDN files en masse. This webmaster tool ',
+    'desc' => 'adds a unique version string to your CDN entries so that your (Amazon Cloudfront, for instance) automatically pulls your mofidied static files.',
+    'title' => '<em><strong>CDN Buster</strong></em> can help you minimize the frustration when your CDN (Amazon Cloudfront, for instance) refuses to pull your newly updated JS or CSS file. All you have to do is to enter the version string in the plugin admin page (and your WP Super Cache or W3 Total Cache admin pages). You will never have to logon to your Amazon (or any other CDN provider) site to manually hunt and invalidate entries.',
+    'pro' => 'The Lite version of <em><strong>CDN Buster</strong></em> is fully functional. In the Pro version, you can specify multiple CDN addresses that use the same origin pull location. Moreover, the Pro version will look for any caching plugins you may have on your blog and update their CDN entries automatically! It also gives you more control over the types of files (specified by their extensions) that you want to serve out of the CDN.');
+
 $myPlugins['google-adsense'] = array('value' => 'Google AdSense',
     'price' => '9.45',
     'share' => true,

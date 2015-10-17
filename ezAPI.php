@@ -90,12 +90,15 @@ if (!class_exists("ezOption")) {
 
   class ezOption { // base ezOption class
 
-    var $name, $desc, $title, $value, $type;
+    var $name, $desc, $title, $value, $type, $class;
     var $width, $height, $before, $between, $after, $style; // display attributes
 
     function ezOption($type, $name) {// constructior
       $this->type = $type;
       $this->name = $name;
+      if ($type == 'submit') {
+        $this->class = "button-primary";
+      }
     }
 
     function get() {// get the value of an ezOption
@@ -139,6 +142,9 @@ if (!class_exists("ezOption")) {
       '" name="', $this->name, '" ';
       if (!empty($this->style)) {
         echo ' style="', $this->style, '"';
+      }
+      if (!empty($this->class)) {
+        echo ' class="', $this->class, '"';
       }
       echo ' value="', $this->value, '"';
       echo ' />', $this->desc, "\n</label>\n";
@@ -882,7 +888,7 @@ if (!class_exists("ezOverview")) {
     }
 
     function renderContent() {
-      $supportText = "<div style=\"width:280px;background-color:#cff;padding:5px;border: solid 1px\" id=\"support\"><b>Support this Plugin!</b><br />Buy <span style=\"text-decoration:underline\" onmouseover=\"TagToTip('unreal', WIDTH, 205, TITLE, 'Buy &lt;em&gt;The Unreal Universe&lt;/em&gt;',STICKY, 1, CLOSEBTN, true, CLICKCLOSE, true, FIX, [this, 5, 2])\"><b style=\"color:#a48;font-variant: small-caps;text-decoration:underline\">The Unreal Universe</b></span> or <span style=\"text-decoration:underline\" onmouseover=\"TagToTip('pqd', WIDTH, 205, TITLE, '&lt;em&gt;Principles of Quant. Devel.&lt;/em&gt;',STICKY, 1, CLOSEBTN, true, CLICKCLOSE, true, FIX, [this, 5, 2])\"><b style=\"color:#84a;font-variant: small-caps;text-decoration:underline\">Principles of Quantitative Development</b></span>.</div><br />";
+      $supportText = "<div style=\"width:280px;background-color:#dff;padding:5px;border: solid 1px\" id=\"support\"><b>Support this Plugin!</b><br />Buy <span style=\"text-decoration:underline\" onmouseover=\"TagToTip('unreal', WIDTH, 205, TITLE, 'Buy &lt;em&gt;The Unreal Universe&lt;/em&gt;',STICKY, 1, CLOSEBTN, true, CLICKCLOSE, true, FIX, [this, 5, 2])\"><b style=\"color:#a48;font-variant: small-caps;text-decoration:underline\">The Unreal Universe</b></span> or <span style=\"text-decoration:underline\" onmouseover=\"TagToTip('pqd', WIDTH, 205, TITLE, '&lt;em&gt;Principles of Quant. Devel.&lt;/em&gt;',STICKY, 1, CLOSEBTN, true, CLICKCLOSE, true, FIX, [this, 5, 2])\"><b style=\"color:#84a;font-variant: small-caps;text-decoration:underline\">Principles of Quantitative Development</b></span>.</div><br />";
       echo $supportText;
     }
 
